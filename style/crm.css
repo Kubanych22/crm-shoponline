@@ -65,7 +65,7 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  margin-left: -10px;
+  margin-left: 0;
 }
 
 .checkbox__input:before {
@@ -118,7 +118,7 @@
 .checkbox__discount-input {
   width: 482px;
   height: 40px;
-  margin-left: 38px;
+  margin-left: 48px;
 }
 
 .form__textarea {
