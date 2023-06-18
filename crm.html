@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Проект CRM-ShopOnline</title>
+
+   <link rel="preload" href="fonts/inter-regular.woff2" as="font" type="font/woff2" crossorigin>
+   <link rel="preload" href="fonts/inter-600.woff2" as="font" type="font/woff2" crossorigin>
+   <link rel="preload" href="fonts/inter-700.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="style/index.css">
+
+</head>
+<body>
+  <section class="main-modal">
+    <div class="container modal">
+      <form class="modal__form form" action="https://jsonplaceholder.typicode.com/posts" method="post" id="form">
+        <h1 class="form__title">Добавить товар</h1>
+        <fieldset class="form__field">
+          <label class="form__label" for="name">Наименование</label>
+          <input class="form__input" type="text" name="name" id="name">
+
+          <label class="form__label" for="category">Категория</label>
+          <input class="form__input" type="text" name="category" id="category">
+
+          <label class="form__label" for="units">Единицы измерения</label>
+          <input class="form__input" type="text" name="units" id="units">
+
+          <label class="form__label checkbox" for="discount">Дисконт</label>
+              <input class="form__input checkbox__input" type="checkbox" name="check-discount">
+              <input class="form__input checkbox__discount-input" type="number" step="any" name="discount" id="discount">
+
+          <label class="form__label" for="description">Описание</label>
+          <textarea class="form__textarea" name="description" id="description"></textarea>
+
+          <label class="form__label" for="count">Количество</label>
+          <input class="form__input" type="number" name="count" id="count">
+
+          <label class="form__label" for="price">Цена</label>
+          <input class="form__input" type="number" step="any" name="price" id="price">
+          <button class="form__close-button" type="button">
+            <svg class="form__close-button_img" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                 xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 2L22 22" stroke-width="3" stroke-linecap="round"/>
+              <path d="M2 22L22 2" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </fieldset>
+        <button class="form__submit-button" type="submit" form="form">Добавить товар</button>
+      </form>
+    </div>
+  </section>
+</body>
+</html>
