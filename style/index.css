@@ -1,4 +1,7 @@
-@import "normalize.css";
-@import "fonts.css";
-@import "style.css";
-@import "crm.css";
+.main__section {
+  padding: 25px 0;
+}
+
+.main__section-title {
+  text-align: center;
+}
