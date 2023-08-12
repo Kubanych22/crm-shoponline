@@ -1,3 +1,9 @@
+'use strict';
+
+const rainbow = 'color: green';
+
+console.log('%cСкрипт из предыдущего задания\n', rainbow);
+
 const productName = "Навигационная система Soundmax";
 const productCount = 5;
 const productCategory = 'Техника для дома';
