@@ -1,7 +1,7 @@
 
 console.log('%c\nВыполняются скрипты из папки \"tasks\"\nЗадача 1:\n', rainbow);
 
-const converter = cost => cost * 1.2 * 73
+const converter = cost => (cost * 1.2 * 73).toFixed(2)
 
 let money = prompt('Введите стоимость покупки в евро')
 
