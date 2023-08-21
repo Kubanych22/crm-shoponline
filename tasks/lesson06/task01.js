@@ -4,22 +4,10 @@ const allStudents = ['Иванов', 'Петров', 'Сидоров', 'Кузн
 
 const failedStudents = ['Сидоров', 'Смирнов', 'Попов'];
 
-const isFailed = (student, failed) => {
-  for (const item of failed) {
-    if (student === item) {
-      return true
-    }
-  }
-  return false
-}
-
 const filter = (all, failed) => {
-  let passed = []
-  for (const student of all) {
-      if(!isFailed(student, failed)) {
-        passed.push(student)
-      }
-  }
+  
+  const passed = all.filter(student => !failed.some(item => student === item))
+  
   return passed.join(', ')
 }
 
