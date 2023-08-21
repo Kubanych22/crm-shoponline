@@ -12,7 +12,7 @@ const allCashbox2 = [
 ];
 
 
-const getAveragePriceGoods = (acc, item, index, arr) => {
+const getAveragePriceGoods = allCashbox2.reduce((acc, item, index, arr) => {
   const sum = acc + item[1] / item[0]
   
   if (index === arr.length - 1) {
@@ -20,8 +20,8 @@ const getAveragePriceGoods = (acc, item, index, arr) => {
   }
   
   return sum
-}
+}, 0)
 
-const averagePrice = allCashbox2.reduce(getAveragePriceGoods, 0).toFixed(2)
+const averagePrice = getAveragePriceGoods.toFixed(2)
 
 console.log(`Средняя стоимость одного товара в магазине ${averagePrice}`)
