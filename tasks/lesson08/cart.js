@@ -1,4 +1,4 @@
-console.log('%c\nДомашнее задание урока 8:\n', rainbow);8
+console.log('%c\nДомашнее задание урока 8:\n', rainbow);
 
 const cart = {
   items: [],
@@ -30,9 +30,14 @@ const cart = {
     
     // вывод в виде таблицы
     let summaryTable = JSON.parse(cloneItems);
+    for(const element of summaryTable) {
+      let iterableEl = Object.keys(element);
+      element.sum = element[iterableEl[1]] * element[iterableEl[2]]
+    }
+  
     const nameProduct = 'Общая стоимость';
-    const costProduct = this.getTotalPrice();
-    summaryTable.push({nameProduct, costProduct});
+    const sum = this.getTotalPrice();
+    summaryTable.push({nameProduct, sum});
     console.table(summaryTable);
   }
 };
