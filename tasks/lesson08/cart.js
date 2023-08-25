@@ -29,12 +29,13 @@ const cart = {
     console.log(`Общая стоимость ${this.getTotalPrice()} руб.`);
     
     // вывод в виде таблицы
-    // let summaryTable = JSON.parse(cloneItems); // медленно!
+    // let summaryTable = Object.assign(this.items);
     // let summaryTable = [...this.items]; // Spread
-    let summaryTable = Object.assign(this.items);
+    let summaryTable = JSON.parse(cloneItems);   // медленно!
     for(const element of summaryTable) {
-      let iterableEl = Object.keys(element);
-      element.sum = element[iterableEl[1]] * element[iterableEl[2]]
+      let iterableEl = Object.values(element);
+      const [, priceProduct, countProduct] = iterableEl;
+      element.sum  = priceProduct * countProduct;
     }
   
     const nameProduct = 'Общая стоимость';
