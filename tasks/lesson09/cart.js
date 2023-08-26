@@ -2,10 +2,12 @@ console.log('%c\nДомашнее задание урока 9\n\nЗадача 1:
 
 const cart = {
   items: [],
+  count: 0,
+  
   get totalPrice() {
    return this.calculateItemPrice();
   },
-  count: 0,
+  
   add(nameProduct, priceProduct, countProduct = 1) {
     this.increaseCount(countProduct);
     return this.items.push({nameProduct, priceProduct, countProduct});
