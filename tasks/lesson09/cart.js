@@ -1,12 +1,11 @@
-console.log('%c\nДомашнее задание урока 8:\n', rainbow);
+console.log('%c\nДомашнее задание урока 9\n\nЗадача 1:\n', rainbow);
 
 const cart = {
   items: [],
-  totalPrice: 0,
-  count: 0,
-  getTotalPrice() {
-    return this.totalPrice;
+  get totalPrice() {
+   return this.calculateItemPrice();
   },
+  count: 0,
   add(nameProduct, priceProduct, countProduct = 1) {
     this.increaseCount(countProduct);
     return this.items.push({nameProduct, priceProduct, countProduct});
@@ -15,23 +14,27 @@ const cart = {
     this.count += countProduct;
   },
   calculateItemPrice() {
-    return this.totalPrice = this.items.reduce((acc, item) => acc + item.countProduct * item.priceProduct, 0);
+    return this.items.reduce((acc, item) => acc + item.countProduct * item.priceProduct, 0);
   },
   clear() {
+    if (!confirm('Вы действительно хотите очистить корзину')) {
+      return;
+    }
     this.items = [];
-    this.totalPrice = 0;
     this.count = 0;
   },
   print() {
+    if (this.items.length === 0) {
+      console.log('\nВаша корзина пуста');
+      return;
+    }
     console.log('Ваша корзина:');
     let cloneItems = JSON.stringify(this.items);
     console.log(cloneItems);
-    console.log(`Общая стоимость ${this.getTotalPrice()} руб.`);
+    console.log(`Общая стоимость ${this.totalPrice} руб.`);
     
     // вывод в виде таблицы
-    // let summaryTable = Object.assign(this.items);
-    // let summaryTable = [...this.items]; // Spread
-    let summaryTable = JSON.parse(cloneItems);   // медленно!
+    let summaryTable = JSON.parse(cloneItems);
     for(const element of summaryTable) {
       let iterableEl = Object.values(element);
       const [, priceProduct, countProduct] = iterableEl;
@@ -39,7 +42,7 @@ const cart = {
     }
   
     const nameProduct = 'Общая стоимость';
-    const sum = this.getTotalPrice();
+    const sum = this.totalPrice;
     summaryTable.push({nameProduct, sum});
     console.table(summaryTable);
   }
@@ -50,9 +53,14 @@ cart.add('Компьютер', 70000);
 cart.add('Телевизор', 50000);
 cart.add('Настольная игра', 3500, 3);
 
+cart.totalPrice = 10;
+
 cart.calculateItemPrice();
 
-cart.print()
+cart.totalPrice = 10;
 
-// cart.clear()
+cart.print();
 
+// cart.clear();
+//
+// cart.print();
