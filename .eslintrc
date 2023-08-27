@@ -4,9 +4,11 @@
     "es6": true,
     "node": true
   },
-  "extends": ["eslint:recommended"],
+  "extends": [
+    "eslint:recommended"
+  ],
   "parserOptions": {
-    "parser": "babel-eslint",
+//    "parser": "babel-eslint",
     "ecmaVersion": "latest"
   },
   "rules": {
@@ -18,10 +20,7 @@
       "error",
       "always"
     ],
-    "strict": [
-      "error",
-      "global"
-    ],
+    "strict": 0,
     "max-nested-callbacks": [
       "error",
       {
@@ -154,12 +153,7 @@
     "no-throw-literal": "error",
     "no-with": "error",
     "prefer-promise-reject-errors": "error",
-    "no-unused-vars": [
-      "error",
-      {
-        "args": "none"
-      }
-    ],
+    "no-unused-vars": "off",
     "array-bracket-newline": "off",
     "array-bracket-spacing": [
       "error",
@@ -214,7 +208,7 @@
     "max-len": [
       "error",
       {
-        "code": 80,
+        "code": 120,
         "tabWidth": 2,
         "ignoreUrls": true,
         "ignorePattern": "goog.(module|require)"
@@ -231,7 +225,13 @@
     ],
     "no-new-object": "error",
     "no-tabs": "error",
-    "no-trailing-spaces": "error",
+    "no-trailing-spaces": [
+      "error",
+      {
+        "ignoreComments": true,
+        "skipBlankLines": true
+      }
+    ],
     "object-curly-spacing": "error",
     "one-var": [
       "error",
