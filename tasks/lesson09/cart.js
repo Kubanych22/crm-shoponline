@@ -59,11 +59,11 @@ cart.add('Компьютер', 70000);
 cart.add('Телевизор', 50000);
 cart.add('Настольная игра', 3500, 3);
 
-cart.totalPrice = 10;
+// cart.totalPrice = 10;
 
 cart.calculateItemPrice();
 
-cart.totalPrice = 10;
+// cart.totalPrice = 10;
 
 cart.print();
 
