@@ -1,13 +1,16 @@
+'use strict';
+
+// eslint-disable-next-line no-undef
 console.log('%c\nДомашнее задание урока 9\n\nЗадача 1:\n', rainbow);
 
 const cart = {
   items: [],
   count: 0,
-  
+
   get totalPrice() {
-   return this.calculateItemPrice();
+    return this.calculateItemPrice();
   },
-  
+
   add(nameProduct, priceProduct, countProduct = 1) {
     this.increaseCount(countProduct);
     return this.items.push({nameProduct, priceProduct, countProduct});
@@ -16,7 +19,8 @@ const cart = {
     this.count += countProduct;
   },
   calculateItemPrice() {
-    return this.items.reduce((acc, item) => acc + item.countProduct * item.priceProduct, 0);
+    return this.items.reduce((acc, item) =>
+      acc + item.countProduct * item.priceProduct, 0);
   },
   clear() {
     if (!confirm('Вы действительно хотите очистить корзину')) {
@@ -31,23 +35,23 @@ const cart = {
       return;
     }
     console.log('Ваша корзина:');
-    let cloneItems = JSON.stringify(this.items);
+    const cloneItems = JSON.stringify(this.items);
     console.log(cloneItems);
     console.log(`Общая стоимость ${this.totalPrice} руб.`);
-    
+
     // вывод в виде таблицы
-    let summaryTable = JSON.parse(cloneItems);
-    for(const element of summaryTable) {
-      let iterableEl = Object.values(element);
+    const summaryTable = JSON.parse(cloneItems);
+    for (const element of summaryTable) {
+      const iterableEl = Object.values(element);
       const [, priceProduct, countProduct] = iterableEl;
-      element.sum  = priceProduct * countProduct;
+      element.sum = priceProduct * countProduct;
     }
-  
+
     const nameProduct = 'Общая стоимость';
     const sum = this.totalPrice;
     summaryTable.push({nameProduct, sum});
     console.table(summaryTable);
-  }
+  },
 };
 
 cart.add('Телефон', 10000, 2);
