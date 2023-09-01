@@ -24,13 +24,8 @@
   };
   
   const findFigure = (length, str, indexFigure, lang) => {
-    if (length < 1) {
-      return indexFigure;
-    } else {
-      let tempArr = lang.map(item => item.substring(0, str.length));
-      indexFigure = tempArr.findIndex(item => item === str.substring(0, str.length));
-      return findFigure(length - 1, str, indexFigure, lang);
-    }
+    let tempArr = lang.map(item => item.substring(0, str.length));
+    return tempArr.findIndex(item => item === str.substring(0, str.length));
   };
   
   const getChoicePlayer = (lang) => {
@@ -68,7 +63,7 @@
       return true;
     }
     return false;
-  }
+  };
   
   const game = (language) => {
     language = getFigure('');
@@ -88,7 +83,7 @@
       },
       set addCompScore(score) {
         this.computer += score;
-      }
+      },
     };
     const lang = language === 'En' || language === 'Eng' ? FIGURES_ENG : FIGURES_RUS;
     return function start() {
