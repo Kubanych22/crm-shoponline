@@ -17,13 +17,21 @@
   };
   
   const getFigure = lang => {
-    lang = prompt('Выберите язык\nВведите En или Eng для выбора английского языка.\n' +
-      'Для выбора русского языка просто нажмите ОК');
-    if (lang === null) {
+    if (window.firstGame) {
+      window.firstGame = false;
+      lang = prompt('Выберите язык\nВведите En или Eng для выбора английского языка.\n' +
+        'Для выбора русского языка просто нажмите ОК');
+      if (lang === null) {
+        return null;
+      }
+      lang = lang.slice(0, 1).toUpperCase() + lang.slice(1).toLowerCase();
+      return lang;
+    }
+    // если язык уже был выбран при первом запуске игры
+    if (window.lang === 0) {
       return null;
     }
-    lang = lang.slice(0, 1).toUpperCase() + lang.slice(1).toLowerCase();
-    return lang;
+    return 'En';
   };
   
   const findFigure = (length, str, indexFigure, lang) => {
@@ -56,13 +64,32 @@
   const showResults = (result, lang) => {
     const more = lang === FIGURES_RUS ? confirm('Еще?') : confirm('More?');
     if (!more) {
-      let showResult;
-      if (lang === FIGURES_RUS) {
-        showResult = `Результат игры\nКомпьютер: ${result.compScore}\nИгрок: ${result.playerScore}`;
-      } else {
-        showResult = `Game results\nComputer: ${result.compScore}\nPlayer: ${result.playerScore}`;
+      const compScore = result.compScore;
+      const playerScore = result.playerScore;
+      let showResultRus = `Результат игры\nКомпьютер: ${compScore}\nИгрок: ${playerScore}`;
+      let showResultEn = `Game results\nComputer: ${compScore}\nPlayer: ${playerScore}`;
+      if (compScore === playerScore && lang === FIGURES_RUS) {
+        showResultRus += '\nНичья! Для определения победителя нужно сыграть еще.';
+        alert(showResultRus);
+        return false;
+      } else if (compScore === playerScore && lang !== FIGURES_RUS) {
+        showResultEn += '\nA draw! To determine the winner, you need to play again.';
+        alert(showResultEn);
+        return false;
       }
-      alert(showResult);
+      if (lang === FIGURES_RUS) {
+        alert(showResultRus + '\nСейчас вы перейдете на игру "Марблы"');
+        window.lang = 0;
+      } else {
+        alert(showResultEn + '\nNow you will switch to the game "Marbles"');
+        window.lang = 1;
+      }
+      if (compScore > playerScore) {
+        window.winner = 1;
+      } else {
+        window.winner = 0;
+      }
+      
       return true;
     }
     return false;
