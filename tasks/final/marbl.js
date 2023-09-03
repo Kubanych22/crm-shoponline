@@ -124,7 +124,7 @@
           flag = !error;
         } else {
           numberBalls = prompt(`You have ${playerScore} balls.\n` +
-          `The number of balls at the computer: ${playerScore}\n` +
+          `The number of balls at the computer: ${compScore}\n` +
           `Guess the number from 1 to ${playerScore}`);
           error = computerGuesses(numberBalls, playerScore, result);
           flag = !error;
