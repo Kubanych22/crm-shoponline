@@ -4,8 +4,8 @@ const swapNode = (nodeA, nodeB) => {
   const parentA = nodeA.parentNode;
   const siblingA = nodeA.nextSibling === nodeB ? nodeA : nodeA.nextSibling;
   
-  nodeB.parentNode.insertBefore(nodeA, nodeB);
-  parentA.insertBefore(nodeB, siblingA);
+  nodeB.parentNode.append(nodeA, nodeB);
+  parentA.append(nodeB, siblingA);
 }
 
 const items = document.querySelectorAll('.item');
@@ -17,7 +17,6 @@ let itemFour = document.querySelector('.item_four');
 items[4].before(itemFour);
 
 itemFour = document.querySelectorAll('.props__item_four');
-console.log(itemFour);
 itemFour[3].after(itemTwoPropsFour)
 const itemFive = document.querySelector('.item_five');
 const itemFiveTitle = itemFive.querySelector('.item__title');
